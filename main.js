@@ -1,7 +1,7 @@
 function bienvenida(){
     alert("Bienvenido a Fo.Cripto")
     let nombre = prompt("Ingrese su nombre");
-    while(nombre === '' || typeof(nombre) !== 'string'){
+    while(nombre === '' || !isNaN(nombre)){
         nombre = prompt("Ingrese su nombre");
     }
 }
@@ -12,6 +12,10 @@ function elegirCripto(){
     do{
         cripto = prompt("Que cripto desea convertir? : \n1) Bitcoin\n2) Ethereum\n3) Avalanche\n4) Solana");
     }while(cripto < 1 || cripto > 4);
+
+
+
+    // while(cripto < 1 || cripto > 4);
 
     switch(cripto){
         case "1":
@@ -42,6 +46,9 @@ function convertir (moneda, valor){
 
     alert("Usted eligio : " + moneda + ".\nEl precio en dolar es u$s" + valor);
     let cantidad = parseFloat(prompt("Introduzca una cantidad de dolares a cambiar"))
+    while(isNaN(cantidad)){
+        cantidad = parseFloat(prompt("Error, introduzca una cantidad de dolares a cambiar"))
+    }
     alert("Su monto en " + moneda + " es: " + (cantidad / valor));
 
     return cantidad / valor;
