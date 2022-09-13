@@ -46,10 +46,10 @@ function convertir (moneda, valor){
     alert("Su monto en " + moneda + " es: " + (cantidad / valor));
 
     return cantidad / valor;
-    }
+}
 
 
-    
+
 bienvenida();
 
 let cripto = elegirCripto();
