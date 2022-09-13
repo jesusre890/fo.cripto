@@ -11,7 +11,6 @@ function elegirCripto(){
 
     do{
         cripto = prompt("Que cripto desea convertir? : \n1) Bitcoin\n2) Ethereum\n3) Avalanche\n4) Solana");
-        console.log(typeof(cripto))
     }while(cripto < 1 || cripto > 4);
 
     switch(cripto){
