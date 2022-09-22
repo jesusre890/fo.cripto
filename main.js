@@ -1,65 +1,77 @@
+class Criptomonedas {
+    constructor (id, nombre, precio) {
+        this.id = Number(id);
+        this.nombre = nombre;
+        this.precio = Number(precio);
+    }
+}
+
+const arrayCriptomonedas = []; //recopilo en este array toda la informacion
+
+const bitcoin = new Criptomonedas(1, 'Bitcoin', 20000);
+const ethereum = new Criptomonedas(2, 'Ethereum', 1400);
+const avalanche = new Criptomonedas(3, 'Avalanche', 17);
+const solana = new Criptomonedas(4, 'Solana', 33);
+const binance = new Criptomonedas(5, 'Binance', 269);
+const apecoin = new Criptomonedas(6, 'Apecoin', 6);
+const cardano = new Criptomonedas(7, 'Cardano', 1);
+const near = new Criptomonedas(8, 'Near', 4);
+//se le brinda esta informacion al objeto Criptomonedas
+
+arrayCriptomonedas.push(bitcoin, ethereum, avalanche, solana, binance, apecoin, cardano, near);
+//se envia la info mediante "push" al array creado
+
+// console.log(arrayCriptomonedas)
+
 function bienvenida(){
     alert("Bienvenido a Fo.Cripto")
     let nombre = prompt("Ingrese su nombre");
     while(nombre === '' || !isNaN(nombre)){
         nombre = prompt("Ingrese su nombre");
     }
+    return nombre
 }
 
 function elegirCripto(){
     let cripto;
+    let pregunta = 'Que cripto desea convertir? : '
+
+    for (let i = 0; i < arrayCriptomonedas.length; i++) {
+        pregunta += '\n'+ arrayCriptomonedas[i].id + '- ' +arrayCriptomonedas[i].nombre;
+    }
 
     do{
-        cripto = prompt("Que cripto desea convertir? : \n1) Bitcoin\n2) Ethereum\n3) Avalanche\n4) Solana");
-    }while(cripto < 1 || cripto > 4);
+        cripto = parseInt(prompt('Hola ' + nombreId + '\n' + pregunta))
+    }while(cripto < 1 || cripto > arrayCriptomonedas.length);
 
+    const opcion = arrayCriptomonedas.find(e => e.id === cripto)
 
+    alert('Usted eligio: ' + opcion.nombre + ', su precio en dolares es: u$s' + opcion.precio)
 
-    // while(cripto < 1 || cripto > 4);
-
-    switch(cripto){
-        case "1":
-            return "Bitcoin";
-        case "2":
-            return "Ethereum";
-        case "3":
-            return "Avalanche";
-        case "4":
-            return "Solana";
-    }
+    return opcion;
 }
 
-function monedaEnDolar(moneda) {
-    if(moneda === 'Bitcoin'){
-        return 22300;
-    }else if(moneda === 'Ethereum'){
-        return 1700;
-    }else if(moneda === 'Avalanche'){
-        return 21;
-    }else if(moneda === 'Solana'){
-        return 37;
-    }
-}
+function cambio(objeto) {
+    let otroCambio = false;
 
-function convertir (moneda, valor){
+    do{
+        let cantidad = parseFloat(prompt("Introduzca una cantidad de dolares a cambiar"));
+        while(isNaN(cantidad)){
+            cantidad = parseFloat(prompt("Dato incorrecto, introduzca una cantidad de dolarres a cambiar"));
+        }
+        alert("Su monto en " + objeto.nombre + " es: " + (cantidad / objeto.precio));
 
+        otroCambio = confirm('Desea seguir cambiando?');
+    }while(otroCambio);
 
-    alert("Usted eligio : " + moneda + ".\nEl precio en dolar es u$s" + valor);
-    let cantidad = parseFloat(prompt("Introduzca una cantidad de dolares a cambiar"))
-    while(isNaN(cantidad)){
-        cantidad = parseFloat(prompt("Error, introduzca una cantidad de dolares a cambiar"))
-    }
-    alert("Su monto en " + moneda + " es: " + (cantidad / valor));
-
-    return cantidad / valor;
+    alert("Gracias por utilizar Fo.Cripto " + nombreId + ", " + "vuelva pronto")
 }
 
 
 
-bienvenida();
+nombreId = bienvenida();
 
-let cripto = elegirCripto();
-let monedaDolar = monedaEnDolar(cripto);
-convertir(cripto, monedaDolar);
+let criptoElegida = elegirCripto();
+cambio(criptoElegida);
 
 
