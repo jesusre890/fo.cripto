@@ -4,39 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <title> Fo.Cripto </title>
 </head>
-<body class="bg-[#181A20]">
-    <header>
-        <h1 class="text-white text-5xl flex justify-center items-center h-36 bg-[#2a303f] rounded-b-xl"> Fo.Cripto </h1>
+<body class="bg-[#181A20] ">
+    <header class="font-normal text-center p-10 mt-3">
+        <h1 class="text-white text-5xl"> Fo.Cripto </h1>
     </header>
-    <main class="flex justify-center items-center h-96">
-        <div class="h-auto m-10" >
-            <form class="formulario bg-[#2a303f] rounded-xl p-10">
-                <p class="text-white text-center h-10"> Cripto moneda a cotizar </p>
-                <div class="my-3">
-                    <input class="m-2 w-32" type="text" name="cambio" id="dolar">
-                    <input class="m-2 w-32" type="text" name="cambio" id="criptomoneda">
-                </div>
-                <p class="text-white text-center h-10"> Ingresar monto </p>
-                <div class="my-3">
-                    <input class="text-white text-center w-32 m-2" type="number" id="valor">
-                    <input class="text-white text-center bg-slate-600 w-32 h-6 rounded-xl m-3" type="button" id="cotizador" value="Convertir" onclick="">
-                </div>
-            </form>
-        </div>
+    <main id="cotizador-contenedor" class="flex items-center justify-center">
+
     </main>
-    <footer class="bg-[#2a303f] rounded-t-xl">
-        <div class="footerRedes flex justify-center items-center h-16">
-            <a href="https://github.com/jesusre890" class="invert" target="_blank"><img src="img/bxl-github.svg" alt="github"></a>
-            <a href="https://www.linkedin.com/in/jes%C3%BAs-re-1a11aa1a5/" class="invert" target="_blank"><img src="img/bxl-linkedin.svg" alt="linkedin"></a>
+    <footer class="text-center mt-3 pb-3 items-center">
+        <div class="footerRedes flex justify-center pt-5">
+            <a href="https://github.com/jesusre890" class="invert mx-3" target="_blank"><img src="img/bxl-github.svg" alt="github"></a>
+            <a href="https://www.linkedin.com/in/jes%C3%BAs-re-1a11aa1a5/" class="invert mx-3" target="_blank"><img src="img/bxl-linkedin.svg" alt="linkedin"></a>
         </div>
-        <div class="derechosAutor text-white h-10">
-            <p class="codigoRegistrado text-center">
+        <div class="derechosAutor text-white text-sm mt-10">
+            <p class="codigoRegistrado">
                 &#169 Fo.2022
             </p>
         </div>
+
+        <script src="main.js"></script>
+        <script src="App.js"></script>
+        <script src="criptomonedas.js"></script>
+        <script src="const.js"></script>
     </footer>
 
 
