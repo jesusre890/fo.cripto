@@ -13,7 +13,34 @@
         <h1 class="text-white text-5xl"> Fo.Cripto </h1>
     </header>
     <main id="cotizador-contenedor" class="flex items-center justify-center">
-
+        <div class="cotizador-int">
+            <form class="formulario bg-[#2a303f] p-12 rounded-xl text-center" id="form">
+            <p class="text-white text-3xl"> Cotizador </p>
+                <div class="lista flex justify-around items-center m-3 ">
+                    <div class="divisa1">
+                        <div id="seleccion1" class="seleccion1 flex  h-10 items-center justify-center rounded-sm">
+                            <p class="text-white">USDT = 1 USD</p>
+                        </div>
+                    </div>
+                    <div class="icono cursor-pointer mt-30px to-white"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="divisa2">
+                        <div id="seleccion2" class="seleccion2 flex w-16 h-10 items-center justify-center rounded-sm">
+    
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-around">
+                    <div id="contenedorInput" class="monto text-white">
+                        <input id='valorIngresado2' name="valorIngresado2" type="text" class=" text-black text-center h-8 mb-5 border-l-slate-300" placeholder="0">
+                    </div>
+                </div>
+            <div id="valorResultado" class="flex justify-around">
+    
+            </div>
+            <button type="submit" id=boton class="text-slate-900 text-lg bg-orange-400"> Convertir </button>
+        </form>
+        </div>
+        
     </main>
     <footer class="text-center mt-3 pb-3 items-center">
         <div class="footerRedes flex justify-center pt-5">
@@ -26,22 +53,12 @@
             </p>
         </div>
 
-        <script src="main.js"></script>
-        <script src="App.js"></script>
-        <script src="criptomonedas.js"></script>
-        <script src="const.js"></script>
+        <p class=" text-gr"></p>
+
+
+        <!-- <script src="main.js"></script> -->
+        <script defer src="criptomonedas.js"></script>
+        <script defer src="App.js"></script>
     </footer>
-
-
-
-
-
-
-
-
-
-
-
-    <script src="main.js"></script>
 </body>
 </html>

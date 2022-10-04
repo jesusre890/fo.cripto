@@ -1,8 +1,8 @@
-const criptoMs = [
+const mercados = [
     {
         id:1,
-        abreviatura: 'USD',
-        nombre:"Dolar",
+        abreviatura: 'USDT',
+        nombre:"Tether",
         precio:1,
         cantidad:1
     },

@@ -32,8 +32,16 @@ footer{
     border-radius: 10px;
 }
 
-form :where(input, select, button){
+form :where(input, select){
     width: 100%;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+}
+
+form :where(button){
+    width: 50%;
     outline: none;
     border: none;
     border-radius: 5px;

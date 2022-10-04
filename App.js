@@ -1,90 +1,177 @@
-const contenedor = document.getElementById('cotizador-contenedor');
 
-const div = document.createElement('div');
-div.classList.add('cotizador-int');
+// const contenedor = document.getElementById('cotizador-contenedor');
 
-div.innerHTML += `
-    <form class="formulario bg-[#2a303f] p-12 rounded-xl text-center">
-        <p class="text-white text-3xl"> Cotizador </p>
-            <div class="lista flex justify-between items-center m-3 ">
-                <div class="divisa1">
-                    <div class="text-white flex w-16 h-12 items-center justify-center rounded-sm">
-                        <option id='USD' value="USD">USD</option>
-                    </div>
-                </div>
-                <div class="icono cursor-pointer mt-30px to-white"><i class="fas fa-exchange-alt"></i></div>
-                <div class="divisa2">
-                    <div class="seleccion2 flex w-16 h-10 items-center justify-center rounded-sm">
-                        <select class="w-auto">
-                            <option id='BTC' value="BTC">BTC</option>
-                            <option id='ETH' value="ETH">ETH</option>
-                            <option id='AVA' value="AVA">AVA</option>
-                            <option id='SOL' value="SOL">SOL</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="monto text-white">
-                <p class="mb-3 text-lg ">Ingrese un monto</p>
-                <input id='valorIngresado' class=" text-black text-center h-8 mb-5 border-l-slate-300" type="text" value="0">
-            </div>
-        <div id="valorResultado" class="valorResultado mb-4 text-white"> valorResultado </div>
-        <button id=boton class="text-slate-900 text-lg bg-orange-400"> Resultado </button>
-    </form>
-`;
+// const div = document.createElement('div');
+// div.classList.add('cotizador-int');
 
-contenedor.appendChild(div);
+// div.innerHTML += `
+//     <form class="formulario bg-[#2a303f] p-12 rounded-xl text-center">
+//         <p class="text-white text-3xl"> Cotizador </p>
+//             <div class="lista flex justify-around items-center m-3 ">
+//                 <div class="divisa1">
+//                     <div id="seleccion1" class="seleccion1 flex  h-10 items-center justify-center rounded-sm">
+//                         <p class="text-white">USDT = 1 USD</p>
+//                     </div>
+//                 </div>
+//                 <div class="icono cursor-pointer mt-30px to-white"><i class="fas fa-exchange-alt"></i></div>
+//                 <div class="divisa2">
+//                     <div id="seleccion2" class="seleccion2 flex w-16 h-10 items-center justify-center rounded-sm">
 
-console.log(document.getElementById('valorIngresado'));
+//                     </div>
+//                 </div>
+//             </div>
+//             <div class="flex justify-around">
+//                 <div id="contenedorInput" class="monto text-white">
+//                     <input id='valorIngresado2' type="text" class=" text-black text-center h-8 mb-5 border-l-slate-300" placeholder="0">
+//                 </div>
+//             </div>
+//         <div id="valorResultado" class="flex justify-around">
 
-const boton = document.getElementById('boton')
-boton.addEventListener('click', alerta)
+//         </div>
+//         <button id=boton class="text-slate-900 text-lg bg-orange-400"> Convertir </button>
+//     </form>
+// `;
 
-function alerta(e){
-    e.preventDefault()
-    let valorIngresado = document.getElementById('valorIngresado')
-    alert(valorIngresado.value)
+// contenedor.appendChild(div);
+
+
+
+
+
+// const boton = document.getElementById('boton');
+// boton.addEventListener('click', alerta);
+
+
+// // resultado
+
+// function alerta(e){
+//     e.preventDefault()
+//     let valorIngresado = document.getElementById('valorIngresado')
+//     const valorResultado = document.getElementById('valorResultado')
+//     valorResultado.innerHTML = `${valorIngresado.value}`
+// }
+
+//selector 2
+const contenedorSelect2 = document.getElementById('seleccion2')
+
+const select2 = document.createElement('select');
+        select2.setAttribute("id", "select2") //ID agregado
+
+mercados.forEach(mercado => {
+    select2.classList.add('opcionCripto1');
+
+    select2.innerHTML += `
+            <option id=${mercado.abreviatura} value=${mercado.abreviatura}>${mercado.abreviatura}</option>
+    `;
+
+})
+contenedorSelect2.appendChild(select2);
+
+const formulario = document.getElementById('form');
+const monedas = document.getElementById('select2');
+
+formulario.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const form = new FormData(formulario);
+    const valorIngresado = form.get('valorIngresado2');
+    convertirValor(valorIngresado, monedas.value);
+});
+
+const convertirValor = (valorIngresado, moneda) => {
+    const monedaResultado = mercados.find(mercado => mercado.abreviatura === moneda);
+    const resultado = valorIngresado / monedaResultado.precio;
+    pintarResultado(resultado);
+};
+
+const pintarResultado = (resultado) => {
+    const contenedorDiv = document.getElementById('valorResultado')
+    const divResultado = document.createElement('div');
+
+    divResultado.innerHTML += `
+            <div id="valorResultado" class="valorResultado mb-4 text-gray-400">Valor: ${resultado}</div>
+    `;
+
+    contenedorDiv.appendChild(divResultado);
+};
+
+
+
+
+//conversion
+
+// const contenedorDiv = document.getElementById('valorResultado')
+
+// const divResultado = document.createElement('div');
+
+// mercados.forEach(mercado => {
+//     divResultado.classList.add('valorResultado');
+
+//     divResultado.innerHTML += `
+//             <div id="valorResultado" class="valorResultado mb-4 text-gray-400"> valor 1 </div>
+//     `;
+
+// })
+// contenedorDiv.appendChild(divResultado);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const selector2 = document.getElementById('select2');
+// const valorIngresado2 = document.getElementById('valorIngresado2')
+
+// const valorResultado_el = document.getElementById('valorResultado');
+// const ejecutar_boton = document.getElementById('boton')
+
+
+
+
+function cambio(valor) {
+
+    if(typeof valor != 'number') {
+        throw TypeError('Debe ser un numero.')
+    }
+
 }
 
 
 
 
 
-// class Criptomonedas {
-//     constructor (id, nombre, precio) {
-//         this.id = Number(id);
-//         this.nombre = nombre;
-//         this.precio = Number(precio);
-//     }
-// }
-
-// const arrayCriptomonedas = []; //recopilo en este array toda la informacion
-
-// const bitcoin = new Criptomonedas(1, 'Bitcoin', 20000);
-// const ethereum = new Criptomonedas(2, 'Ethereum', 1400);
-// const avalanche = new Criptomonedas(3, 'Avalanche', 17);
-// const solana = new Criptomonedas(4, 'Solana', 33);
-// //se le brinda esta informacion al objeto Criptomonedas
-
-// arrayCriptomonedas.push(bitcoin, ethereum, avalanche, solana);
-
-// function cotizador() {
-//     let valorCotizar = parseInt(document.getElementById('valorIngresado').value);
-//     let resultado = 0;
-
-//     if(document.getElementById('BTC')){
-//         resultado = valorCotizar / document.getElementById('BTC')
-//     }else if(document.getElementById('ETH')){
-//         resultado = valorCotizar / document.getElementById('ETH')
-//     }else if(document.getElementById('AVA')){
-//         resultado = valorCotizar / document.getElementById('AVA')
-//     }else if(document.getElementById('SOL')){
-//         resultado = valorCotizar / document.getElementById('SOL')
-//     }else{
-//         alert('Introduzca la cantidad de dolares deseada')
-//     }
-// }
 
 
-// cotizador()
+
+
+
+//     do{
+//         let cantidad = parseFloat(prompt("Introduzca una cantidad de dolares a cambiar"));
+//         while(isNaN(cantidad)){
+//             cantidad = parseFloat(prompt("Dato incorrecto, introduzca una cantidad de dolarres a cambiar"));
+//         }
+//         alert("Su monto en " + objeto.nombre + " es: " + (cantidad / objeto.precio));
+
+//         otroCambio = confirm('Desea seguir cambiando?');
+//     }while(otroCambio);
+
+
+
+
+
+
+
+
+
+
+// selector2.addEventListener('change', calculate);
+// valorIngresado2.addEventListener('input', calculate);
 
