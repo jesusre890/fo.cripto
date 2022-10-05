@@ -39,82 +39,53 @@ formulario.addEventListener('submit', (e) => {
 
 const convertirValor = (valorIngresado, moneda) => {
     const monedaResultado = mercados.find(mercado => mercado.abreviatura === moneda);
-    const resultado = valorIngresado / monedaResultado.precio; //operacion
+    const resultado = (valorIngresado / monedaResultado.precio); //operacion
     pintarResultado(resultado, monedaResultado.abreviatura);
 };
 
 const pintarResultado = (resultado, moneda) => {
     const contenedorDiv = document.getElementById('valorResultado')
     contenedorDiv.innerHTML = `
-            <div id="valorResultado" class="valorResultado mb-4 text-gray-400"> ${resultado} ${moneda} </div>
+            <div id="valorResultado" class="valorResultado mb-4 text-gray-400"> ${resultado.toFixed(2)} ${moneda} </div>
     `;
+
+//Guardamos el resultado en el localStorage
+    const guardar = {resultado, moneda}
+    // console.log(guardar)
+    guardarResultadoStorage(guardar);
 };
+
+
+
+//Aplicando localStorage
+
+
+//primero lo guardo
+const guardarResultadoStorage = (resultado) => {
+    localStorage.setItem('resultado', JSON.stringify(resultado));
+}
+
+//luego lo obtengo
+const tomarResultadoStorage = () => {
+    const resultadoStorage = JSON.parse(localStorage.getItem('resultado'));
+    return resultadoStorage
+};
+
+//lo muestro al actualizar
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('resultado')) {
+        coin = tomarResultadoStorage();
+        pintarResultado(coin.resultado, coin.moneda)
+    }
+})
+
+
+
+
 
 
 
 
 // .toFixed(3)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// const selector2 = document.getElementById('select2');
-// const valorIngresado2 = document.getElementById('valorIngresado2')
-
-// const valorResultado_el = document.getElementById('valorResultado');
-// const ejecutar_boton = document.getElementById('boton')
-
-
-
-
-// function cambio(valor) {
-
-//     if(typeof valor != 'number') {
-//         throw TypeError('Debe ser un numero.')
-//     }
-
-// }
-
-
-
-
-
-
-
-
-
-
-//     do{
-//         let cantidad = parseFloat(prompt("Introduzca una cantidad de dolares a cambiar"));
-//         while(isNaN(cantidad)){
-//             cantidad = parseFloat(prompt("Dato incorrecto, introduzca una cantidad de dolarres a cambiar"));
-//         }
-//         alert("Su monto en " + objeto.nombre + " es: " + (cantidad / objeto.precio));
-
-//         otroCambio = confirm('Desea seguir cambiando?');
-//     }while(otroCambio);
-
-
-
-
-
-
-
-
-
-
-// selector2.addEventListener('change', calculate);
-// valorIngresado2.addEventListener('input', calculate);
 
