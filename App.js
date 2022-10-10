@@ -9,6 +9,8 @@
 //     valorResultado.innerHTML = `${valorIngresado.value}`
 // }
 
+// const { default: Swal } = require("sweetalert2");
+
 
 
 //selector 2
@@ -44,7 +46,9 @@ formulario.addEventListener('submit', (e) => { // le creo un evento a formulario
     //     convertirValor(valorIngresado, monedas.value); //coloco los parametros a la variable creada abajo
     // }
 
-    isNaN(valorIngresado) ? alert('Debe ingresar un numero') : convertirValor(valorIngresado, monedas.value); //OPERADOR TERNARIO, validacion
+    // isNaN(valorIngresado) ? alert('Debe ingresar un numero') : convertirValor(valorIngresado, monedas.value); //OPERADOR TERNARIO, validacion
+
+    isNaN(valorIngresado) ? Swal.fire({icon: 'error', title: 'Error, Debe ingresar un numero'}) : convertirValor(valorIngresado, monedas.value); //OPERADOR TERNARIO, validacion
 });
 
 const convertirValor = (valorIngresado, moneda) => { //declaro variable y realizo la operacion
@@ -90,6 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 
+// const boton = document.getElementById('boton');
+
+// boton.addEventListener('click', () => {
+//     Swal.fire({
+//         text: 'mensaje de prueba'
+//     })
+// })
+
+Swal.fire({
+    title: "Bienvenido a Fo.Cripto!"
+})
 
 
 
