@@ -57,7 +57,7 @@
 //     do{
 //         let cantidad = parseFloat(prompt("Introduzca una cantidad de dolares a cambiar"));
 //         while(isNaN(cantidad)){
-//             cantidad = parseFloat(prompt("Dato incorrecto, introduzca una cantidad de dolarres a cambiar"));
+//             cantidad = parseFloat(prompt("Dato incorrecto, introduzca una cantidad de dolares a cambiar"));
 //         }
 //         alert("Su monto en " + objeto.nombre + " es: " + (cantidad / objeto.precio));
 
