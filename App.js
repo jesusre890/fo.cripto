@@ -45,6 +45,7 @@ formulario.addEventListener("submit", (e) => {
 });
 
 
+
 // OPERACION
 
 const convertirValor = (valorIngresado, moneda) => {
@@ -53,14 +54,15 @@ const convertirValor = (valorIngresado, moneda) => {
     (mercado) => mercado.abreviatura === moneda
   ); //aplico find al array de objetos para que busque lo seleccionado
   const resultado = valorIngresado / monedaResultado.precio; //operacion
-  pintarResultado(resultado, monedaResultado.abreviatura); // coloco los parametros a la variable creada abajo
+  pintarResultado(resultado, monedaResultado); // coloco los parametros a la variable creada abajo
+
 };
 
 const pintarResultado = (resultado, moneda) => {
   //declaro las variables con sus parametros y lo pinto en el html
   const contenedorDiv = document.getElementById("valorResultado");
   contenedorDiv.innerHTML = `
-            <div id="valorResultado" class="valorResultado mb-4 text-gray-400"> ${resultado.toFixed(2)} ${moneda}</div>
+            <div class="valorResultado mb-4 text-gray-400 flex justify-center items-center"> ${resultado.toFixed(2)} ${moneda.abreviatura} <img class="w-8 m-2" src=${moneda.logo}></img></div>
     `;
 
   //Guardamos el resultado en el localStorage
@@ -91,8 +93,21 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+//bienvenida
+const botonEntrar = document.getElementById('entrarBtn')
+botonEntrar.addEventListener('click',() => {
+  const divAOcultar = document.getElementById('bienvenidaCartel')
+  const divAMostrar = document.getElementById('cotiz')
+  divAOcultar.classList.add('hidden')
+  divAMostrar.classList.remove('hidden')
+} )
 
-Swal.fire({
-  //creo el mensaje de bienvenida
-  title: "Bienvenido a Fo.Cripto!",
-});
+
+// Swal.fire({
+//   //creo el mensaje de bienvenida
+//   title: "Bienvenido a Fo.Cripto!",
+// });
+
+
+// formulario de registro
+
