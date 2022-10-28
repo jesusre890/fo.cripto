@@ -126,16 +126,7 @@ botonEntrar.addEventListener('submit',(e)=>{
 
 
 
-
-
-
-
-
-
-
-
-
-// Swal.fire({
-//   //creo el mensaje de bienvenida
-//   title: "Bienvenido a Fo.Cripto!",
-// });
+Swal.fire({
+  //creo el mensaje de bienvenida
+  title: "Bienvenido a Fo.Cripto!",
+});
