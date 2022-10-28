@@ -1,5 +1,10 @@
+// const { default: Swal } = require("sweetalert2");
+
 const contenedorSelect2 = document.getElementById("seleccion2"); //Llamo al del html desde el js
 const select2 = document.createElement("select"); // le creo un elemento "select."
+const nombre = document.getElementById('nombreLogin')
+const botonEntrar = document.getElementById('formLogin');
+let usuarioLogin = document.getElementById('usuarioLogin')
 select2.setAttribute("id", "select2");
 
 
@@ -83,6 +88,11 @@ const tomarResultadoStorage = () => {
   return resultadoStorage;
 };
 
+const nombreLogin = () => {
+  const nombreStorage = JSON.parse(localStorage.getItem('user'));
+  return nombreStorage;
+}
+
 //lo muestro al actualizar
 document.addEventListener("DOMContentLoaded", () => {
   obtenerCriptos();
@@ -90,24 +100,42 @@ document.addEventListener("DOMContentLoaded", () => {
     coin = tomarResultadoStorage();
     pintarResultado(coin.resultado, coin.moneda);
   }
+  if (localStorage.getItem("user")) {
+    const divAOcultar = document.getElementById('bienvenidaCartel');
+    const divAMostrar = document.getElementById('cotiz');
+    divAOcultar.classList.add('hidden');
+    divAMostrar.classList.remove('hidden');
+    usuarioLogin.value = nombreLogin()
+    nombre.innerText = 'Cuenta: ' + usuarioLogin.value;
+    console.log(usuarioLogin.value)
+  }
 });
 
+botonEntrar.addEventListener('submit',(e)=>{
+  e.preventDefault(usuarioLogin);
 
-//bienvenida
-const botonEntrar = document.getElementById('entrarBtn')
-botonEntrar.addEventListener('click',() => {
-  const divAOcultar = document.getElementById('bienvenidaCartel')
-  const divAMostrar = document.getElementById('cotiz')
-  divAOcultar.classList.add('hidden')
-  divAMostrar.classList.remove('hidden')
-} )
+  const divAOcultar = document.getElementById('bienvenidaCartel');
+  const divAMostrar = document.getElementById('cotiz');
+  divAOcultar.classList.add('hidden');
+  divAMostrar.classList.remove('hidden');
+  nombre.innerText = 'Cuenta: ' + usuarioLogin.value;
+
+  localStorage.setItem('user', JSON.stringify(usuarioLogin.value))
+})
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Swal.fire({
 //   //creo el mensaje de bienvenida
 //   title: "Bienvenido a Fo.Cripto!",
 // });
-
-
-// formulario de registro
-

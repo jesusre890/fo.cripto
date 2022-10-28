@@ -14,23 +14,25 @@
     <title> Fo.Cripto </title>
 </head>
 <body class="bg-[#181A20] ">
-    <header class="font-normal text-center p-10 mt-3">
-        <h1 class="text-white text-5xl"> Fo.Cripto </h1>
+    <header class="font-normal text-center p-10 mt-3 flex flex-col items-center gap-8 justify-center" id="headerFo">
+        <div class="text-white bg-slate-700 py-1 rounded-md w-full"></div>
+        <h1 class="text-white text-5xl" > Fo.Cripto </h1>
+        <div class="text-gray-300 text-right pr-3 bg-slate-700 px-1 py-1 rounded-md w-full" id="nombreLogin"></div>
     </header>
 
     <main id="cotizador-contenedor" class="flex items-center justify-center flex-col">
         <div class="flex flex-col items-center text-white bg-[#2a303f] rounded-xl" id="bienvenidaCartel">
             <h2 class="text-3xl m-2">Registro.Fo</h2>
 
-            <div class="contenedor-login w-56 flex items-center text-center m-4">
-                <form action="#" id="form-login" class="flex flex-col gap-3 w-full">
-                    <label for="usuario-login" class="">Ingresa tu usuario</label>
-                    <input class="text-black py-1" id="usuario-login" name="usuario-login" type="text" placeholder="Usuario" required>
-                    <label for="contraseña-login"> Ingresa una contraseña</label>
-                    <input class="text-black py-1" id="contraseña-login" name="contraseña-login" type="password" placeholder="Contraseña" required>
+            <div class="contenedorLogin w-56 flex items-center text-center m-4">
+                <form action="#" id="formLogin" class="flex flex-col items-center gap-3 w-full">
+                    <label for="usuarioLogin" class="">Ingresa tu usuario</label>
+                    <input class="text-black py-1" id="usuarioLogin" name="usuario-login" type="text" placeholder="Usuario" required>
+                    <label for="contraLogin"> Ingresa una contraseña</label>
+                    <input class="text-black py-1" id="contraLogin" name="contra-login" type="password" placeholder="Contraseña" required>
+                    <button type="submit" id="entrarBtn" class="btnIngresar text-white text-center m-3 py-1 px-4 w-26 rounded-md bg-amber-600 text-lg">Ingresar</button>
                 </form>
             </div>
-            <button id="entrarBtn" class="btnIngresar text-white text-center m-3 py-1 px-4 w-26 rounded-md bg-amber-600 text-lg">Ingresar</button>
         </div>
         <div class="cotizador-int hidden" id="cotiz">
             <form class="formulario bg-[#2a303f] p-12 rounded-xl text-center" id="form">
@@ -38,7 +40,7 @@
                 <div class="lista flex justify-around items-center m-3 ">
                     <div class="divisa1">
                         <div id="seleccion1" class="seleccion1 flex  h-10 items-center justify-center rounded-sm">
-                            <p class="text-white flex items-center justify-around"><img class="m-1 w-8" src="../img/teter.png" alt="Tether"> 1 Tether = 1 USD</p>
+                            <p class="text-white flex items-center justify-around"><img class="m-1 w-8" src="img/teter.png" alt="Tether"> 1 Tether = 1 USD</p>
                         </div>
                     </div>
                     <div class="icono cursor-pointer mt-30px to-white"><i class="fas fa-exchange-alt"></i></div>
@@ -53,7 +55,7 @@
                         <input required id='valorIngresado2' name="valorIngresado2" type="text" class=" text-black text-center h-8 mb-5 border-l-slate-300" placeholder="0 USD">
                     </div>
                 </div>
-            <div id="valorResultado" class="flex justify-center h-16">
+            <div id="valorResultado" class="flex justify-center h-10">
 
             </div>
 
