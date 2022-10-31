@@ -133,6 +133,11 @@ botonEntrar.addEventListener('submit',(e)=>{
   nombre.innerText = 'Cuenta: ' + usuarioLogin.value;
   botonSalir.innerText = 'Salir'
 
+  Swal.fire({
+  //creo el mensaje de bienvenida
+    title: "Bienvenido " + usuarioLogin.value +" a Fo.Cripto!",
+  });
+
   localStorage.setItem('user', JSON.stringify(usuarioLogin.value))
 })
 
