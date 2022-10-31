@@ -4,6 +4,7 @@ const contenedorSelect2 = document.getElementById("seleccion2"); //Llamo al del 
 const select2 = document.createElement("select"); // le creo un elemento "select."
 const nombre = document.getElementById('nombreLogin')
 const botonEntrar = document.getElementById('formLogin');
+const botonSalir = document.getElementById('salirBtn')
 let usuarioLogin = document.getElementById('usuarioLogin')
 select2.setAttribute("id", "select2");
 
@@ -93,6 +94,11 @@ const nombreLogin = () => {
   return nombreStorage;
 }
 
+const salirSesion = () => {
+  const salirStorage = JSON.parse(localStorage.getItem('salir'));
+  return salirStorage;
+}
+
 //lo muestro al actualizar
 document.addEventListener("DOMContentLoaded", () => {
   obtenerCriptos();
@@ -105,28 +111,42 @@ document.addEventListener("DOMContentLoaded", () => {
     const divAMostrar = document.getElementById('cotiz');
     divAOcultar.classList.add('hidden');
     divAMostrar.classList.remove('hidden');
+    botonSalir.classList.remove('hidden');
     usuarioLogin.value = nombreLogin()
     nombre.innerText = 'Cuenta: ' + usuarioLogin.value;
-    console.log(usuarioLogin.value)
+    botonSalir.innerText = 'Salir'
   }
 });
+
+
+
 
 botonEntrar.addEventListener('submit',(e)=>{
   e.preventDefault(usuarioLogin);
 
   const divAOcultar = document.getElementById('bienvenidaCartel');
   const divAMostrar = document.getElementById('cotiz');
+
   divAOcultar.classList.add('hidden');
   divAMostrar.classList.remove('hidden');
+  botonSalir.classList.remove('hidden');
   nombre.innerText = 'Cuenta: ' + usuarioLogin.value;
+  botonSalir.innerText = 'Salir'
 
   localStorage.setItem('user', JSON.stringify(usuarioLogin.value))
 })
 
 
 
+botonSalir.addEventListener('click', ()=>{
+  localStorage.clear()
+  location.reload()
+})
 
-Swal.fire({
-  //creo el mensaje de bienvenida
-  title: "Bienvenido a Fo.Cripto!",
-});
+
+
+
+// Swal.fire({
+//   //creo el mensaje de bienvenida
+//   title: "Bienvenido a Fo.Cripto!",
+// });
