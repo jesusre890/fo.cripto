@@ -1,11 +1,11 @@
 // const { default: Swal } = require("sweetalert2");
 
-const contenedorSelect2 = document.getElementById("seleccion2"); //Llamo al del html desde el js
+const contenedorSelect2 = document.getElementById("seleccion2"); //Llamo al select del html desde el js
 const select2 = document.createElement("select"); // le creo un elemento "select."
-const nombre = document.getElementById('nombreLogin')
-const botonEntrar = document.getElementById('formLogin');
-const botonSalir = document.getElementById('salirBtn')
-let usuarioLogin = document.getElementById('usuarioLogin')
+const nombre = document.getElementById('nombreLogin'); //Llamo al nombre logeado del html desde el js
+const botonEntrar = document.getElementById('formLogin'); //Llamo al formulario del login del html desde el js
+const botonSalir = document.getElementById('salirBtn');  //Llamo al boton salir del html desde el js
+let usuarioLogin = document.getElementById('usuarioLogin'); //Llamo al login del usuario del html desde el js
 select2.setAttribute("id", "select2");
 
 
@@ -83,17 +83,19 @@ const guardarResultadoStorage = (resultado) => {
   localStorage.setItem("resultado", JSON.stringify(resultado));
 };
 
-//luego lo obtengo
+//luego obtengo el resultado
 const tomarResultadoStorage = () => {
   const resultadoStorage = JSON.parse(localStorage.getItem("resultado"));
   return resultadoStorage;
 };
 
+// obtengo el login
 const nombreLogin = () => {
   const nombreStorage = JSON.parse(localStorage.getItem('user'));
   return nombreStorage;
 }
 
+// obtengo la funcion salir de sesion
 const salirSesion = () => {
   const salirStorage = JSON.parse(localStorage.getItem('salir'));
   return salirStorage;
@@ -120,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+//generando funcionalidad al boton de registro una vez ingresados los datos
 botonEntrar.addEventListener('submit',(e)=>{
   e.preventDefault(usuarioLogin);
 
@@ -133,8 +135,9 @@ botonEntrar.addEventListener('submit',(e)=>{
   nombre.innerText = 'Cuenta: ' + usuarioLogin.value;
   botonSalir.innerText = 'Salir'
 
+
   Swal.fire({
-  //creo el mensaje de bienvenida
+  //creo el mensaje de bienvenida con nombre loggeado
     title: "Bienvenido " + usuarioLogin.value +" a Fo.Cripto!",
   });
 
@@ -142,7 +145,7 @@ botonEntrar.addEventListener('submit',(e)=>{
 })
 
 
-
+// boton para vaciar storage
 botonSalir.addEventListener('click', ()=>{
   localStorage.clear()
   location.reload()
@@ -150,8 +153,3 @@ botonSalir.addEventListener('click', ()=>{
 
 
 
-
-// Swal.fire({
-//   //creo el mensaje de bienvenida
-//   title: "Bienvenido a Fo.Cripto!",
-// });
