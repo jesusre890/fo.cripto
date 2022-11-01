@@ -6,7 +6,7 @@ const nombre = document.getElementById('nombreLogin'); //Llamo al nombre logeado
 const botonEntrar = document.getElementById('formLogin'); //Llamo al formulario del login del html desde el js
 const botonSalir = document.getElementById('salirBtn');  //Llamo al boton salir del html desde el js
 let usuarioLogin = document.getElementById('usuarioLogin'); //Llamo al login del usuario del html desde el js
-select2.setAttribute("id", "select2");
+select2.setAttribute("id", "select2"); //Le creo un id a select2
 
 
 // creo array vacio para que reciba la info de listaApi"
@@ -101,7 +101,7 @@ const salirSesion = () => {
   return salirStorage;
 }
 
-//lo muestro al actualizar
+//lo muestro al actualizar, Utilizo los condicionales para luego quitar los hidden del cotizador y del boton salir. Tambien para que se guarde el resultado y la moneda
 document.addEventListener("DOMContentLoaded", () => {
   obtenerCriptos();
   if (localStorage.getItem("resultado")) {
